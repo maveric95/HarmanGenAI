@@ -17,7 +17,6 @@
 #include "JavaClass.h"
 
 #include "JavaObject.h"
-#include<iostream>
 
 
 // RAII Wrapper for java strings
