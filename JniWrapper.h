@@ -18,7 +18,6 @@
 
 #include "JavaObject.h"
 #include<iostream>
-//Testing 01
 
 
 // RAII Wrapper for java strings
