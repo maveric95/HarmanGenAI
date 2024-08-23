@@ -52,6 +52,10 @@ public:
     {
         mGlobalRef = env->NewGlobalRef(iObject);
     }
+    CJavaGlobalRef(const CJavaGlobalRef &other)
+    {
+        this.mEnvironment = other.mEnvironment;
+    }
 
     ~CJavaGlobalRef()
     {
