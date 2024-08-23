@@ -18,7 +18,7 @@
 
 #include "JavaObject.h"
 #include<iostream>
-
+#include<iostream>
 
 // RAII Wrapper for java strings
 class CJavaToString
