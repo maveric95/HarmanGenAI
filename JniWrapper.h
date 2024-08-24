@@ -15,8 +15,9 @@
 
 #include "jni.h"
 #include "JavaClass.h"
-#include<iostreams>
 #include "JavaObject.h"
+
+class CJavaGlobalRef
 
 
 // RAII Wrapper for java strings
