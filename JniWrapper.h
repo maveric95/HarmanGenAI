@@ -15,9 +15,9 @@
 
 #include "jni.h"
 #include "JavaClass.h"
-
 #include "JavaObject.h"
-#include<iostream>
+
+class CJavaGlobalRef
 
 
 // RAII Wrapper for java strings
@@ -51,6 +51,10 @@ public:
     CJavaGlobalRef(JNIEnv * env, const jobject iObject) : mEnvironment(env)
     {
         mGlobalRef = env->NewGlobalRef(iObject);
+    }
+    CJavaGlobalRef(const CJavaGlobalRef &other)
+    {
+        this.mEnvironment = other.mEnvironment;
     }
 
     ~CJavaGlobalRef()
