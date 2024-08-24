@@ -5,20 +5,19 @@
  *  (C) Copyright 2015 Yochai Timmer
  *
  * Distributed under the Code Project Open License (CPOL) (the "License");
- * you may not use this file except in compliance with the License.
+ * You may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
  *
  *      http://www.codeproject.com/info/cpol10.aspx
  *
  */
 
-
 #include "jni.h"
 #include "JavaClass.h"
 
 #include "JavaObject.h"
 #include<iostream>
-#include<iostreams>
+#include<iostreams>  // Error: Incorrect include, "iostreams" should be "iostream"
 
 // RAII Wrapper for java strings
 class CJavaToString
@@ -54,7 +53,7 @@ public:
     }
     CJavaGlobalRef(const CJavaGlobalRef &other)
     {
-        this.mEnvironment = other.mEnvironment;
+        this->mEnvironment = other.mEnvironment;  // Error: Incorrect use of 'this' pointer
     }
 
     ~CJavaGlobalRef()
@@ -98,5 +97,21 @@ public:
     JNIEnv*    mEnvironment;
     JavaVM*     mVM;
 };
+
+// Main function with induced errors
+int main() {
+    JNIEnv* env = nullptr;  // Warning: env is never assigned a value, potential null pointer dereference
+    jobject obj = nullptr;
+
+    // Error: Using uninitialized object reference
+    CJavaGlobalRef globalRef(env, obj);
+
+    // Error: Method signature does not match constructor
+    CJavaGlobalRef copyRef = globalRef; // Copy constructor should be called using copyRef(globalRef) instead of assignment
+
+    std::cout << "This is a test print" << std::endl  // Error: Missing semicolon
+
+    return 0;
+}
 
 #endif
